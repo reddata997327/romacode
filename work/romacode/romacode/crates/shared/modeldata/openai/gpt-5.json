@@ -1,0 +1,51 @@
+{
+  "id": "gpt-5",
+  "provider": "openai",
+  "family": "openai",
+  "display_name": "GPT-5",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 400000,
+  "max_output_tokens": 128000,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": false,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": false,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "reasoning_effort": {
+      "supported": true
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_completion_tokens",
+    "temperature_or_top_p_exclusive": false,
+    "stop_supported": false
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.openai.com/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [
+    "Reasoning-family model: omit temperature, top_p and stop; use max_completion_tokens"
+  ],
+  "docs": "https://developers.openai.com/api/docs/models",
+  "sources": [
+    "https://developers.openai.com/api/docs/models"
+  ],
+  "unverified_fields": []
+}

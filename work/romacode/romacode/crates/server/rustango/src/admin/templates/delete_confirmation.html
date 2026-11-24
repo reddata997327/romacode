@@ -1,0 +1,13 @@
+{% extends "admin/base.html" %}
+{% block title %}Delete {{ model_name }} {{ pk }} | {{ site_header }}{% endblock %}
+{% block content %}
+<h1>Delete {{ model_name }} #{{ pk }}?</h1>
+<table>
+  {% for pair in object_pairs %}<tr><th>{{ pair|lookup:"0" }}</th><td>{{ pair|lookup:"1" }}</td></tr>{% endfor %}
+</table>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn danger">Yes, delete</button>
+  <a class="btn secondary" href="{{ admin_prefix }}/{{ model_name }}/">Cancel</a>
+</form>
+{% endblock %}

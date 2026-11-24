@@ -1,0 +1,47 @@
+{
+  "id": "claude-3-opus-20240229",
+  "provider": "anthropic",
+  "family": "anthropic",
+  "display_name": "Claude 3 Opus",
+  "api": "anthropic",
+  "status": "legacy",
+  "context_window": 200000,
+  "max_output_tokens": 4096,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": false,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.anthropic.com",
+    "chat": "/v1/messages",
+    "models": "/v1/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.claude.com/docs/en/models/overview",
+  "sources": [
+    "https://platform.claude.com/docs/en/models/overview"
+  ],
+  "unverified_fields": [
+    "max_output_tokens"
+  ]
+}

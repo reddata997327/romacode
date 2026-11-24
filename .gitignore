@@ -1,0 +1,33 @@
+# Rust build artifacts
+target/
+**/target/
+
+# Sandbox toolchains & caches (not project source)
+.cargo-home/
+.rustup-home/
+
+# Downloaded toolchain binaries
+work/romacode/romacode/crates/.solc/
+work/romacode/romacode/crates/server/rnmap/rnmap
+
+# Local PostgreSQL 17 install, data & debs (work/pglocal)
+work/pglocal/
+
+# Raw captures & saved site assets (contain session/site secrets — local only)
+scripts/dsd-live/captured_login_raw.txt
+scripts/dsd-live/captured_login.json
+scripts/dsd-live/index.html
+scripts/dsd-live/chunk-*.js
+scripts/dsd-live/optimized-*.js
+
+# User-uploaded reference archives (input material, not project source)
+upload/
+
+# Misc
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Operational script (secret-scan patterns inside must not be published)
+scripts/push_repo.sh

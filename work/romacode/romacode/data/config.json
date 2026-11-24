@@ -1,0 +1,55 @@
+{
+  "offense": {
+    "dry_run": true,
+    "autoaccept": false,
+    "max_chain_risk": "high",
+    "scope": [],
+    "deny_effects": [],
+    "loot_dir": "",
+    "seal_secrets": true,
+    "evidence": {
+      "hash_artifacts": true,
+      "screenshot_on_change": true,
+      "keep_raw_http": true
+    },
+    "budget": {
+      "max_concurrent_scans": 64,
+      "max_requests_per_sec": 20,
+      "max_hosts_per_engagement": 4096,
+      "max_spray_attempts_per_account": 3,
+      "max_card_checks_per_min": 30
+    }
+  },
+  "opsec": {
+    "proxy_pool": [],
+    "rotate_every": 25,
+    "jitter_ms": [
+      80,
+      900
+    ],
+    "ua_profile": "chrome-linux",
+    "tls_profile": "chrome",
+    "clock_skew_ms": 0,
+    "burn_after": 0
+  },
+  "card": {
+    "bin_source": "local",
+    "checker_gateways": [],
+    "avs_model": "strict",
+    "three_ds": "assume_yes",
+    "concurrency": 8,
+    "backoff_ms": 1500
+  },
+  "tx": {
+    "currency": "USD",
+    "brand": "generic",
+    "locale": "en-US",
+    "date_skew_days": 0
+  },
+  "forge": {
+    "apk_keystore": "",
+    "apk_alias": "",
+    "dropper_runtime": "native",
+    "obfuscate": true
+  }
+}

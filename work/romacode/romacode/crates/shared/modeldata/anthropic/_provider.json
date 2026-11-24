@@ -1,0 +1,43 @@
+{
+  "id": "_provider",
+  "provider": "anthropic",
+  "family": "anthropic",
+  "display_name": "Anthropic (defaults)",
+  "api": "anthropic",
+  "status": "provider-default",
+  "context_window": 200000,
+  "max_output_tokens": 64000,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "temperature_or_top_p_exclusive": false,
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.anthropic.com",
+    "chat": "/v1/messages",
+    "models": "/v1/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.claude.com/docs/en/models/overview",
+  "sources": [
+    "https://platform.claude.com/docs/en/models/overview"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}

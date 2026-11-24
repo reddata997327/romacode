@@ -1,0 +1,24 @@
+[package]
+name = "romacode-tunnel"
+version = "0.8.1"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+publish = false
+description = "Built-in TCP tunnel for RomaCode (vendored chisel-rs: WebSocket transport, token auth, forward + reverse port forwarding). Zero external deps, std-only."
+
+[lib]
+name = "romacode_tunnel"
+path = "src/lib.rs"
+
+[[bin]]
+name = "romacode-tunnel"
+path = "bin/chisel_main.rs"
+
+[dependencies]
+# Pure-Rust, std-only. No external crates — matches the chisel-rs design and
+# the RomaCode self-contained tooling philosophy.
+
+# When this crate is consumed by romacode-server (for the DB-transport path),
+# the server-side wrapper serialises tunnel control through std::thread and
+# std::sync::mpsc; the engine itself owns no async runtime.

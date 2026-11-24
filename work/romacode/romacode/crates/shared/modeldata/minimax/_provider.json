@@ -1,0 +1,42 @@
+{
+  "id": "_provider",
+  "provider": "minimax",
+  "family": "minimax",
+  "display_name": "MiniMax (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 1000000,
+  "max_output_tokens": 131072,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.minimax.io/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.minimax.io/docs",
+  "sources": [
+    "https://platform.minimax.io"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}

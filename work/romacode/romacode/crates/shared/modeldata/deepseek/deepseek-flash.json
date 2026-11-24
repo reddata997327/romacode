@@ -1,0 +1,52 @@
+{
+  "id": "deepseek-flash",
+  "provider": "deepseek",
+  "family": "deepseek",
+  "display_name": "DeepSeek Flash",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 1000000,
+  "max_output_tokens": 393216,
+  "features": {
+    "vision": false,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": {
+    "input_per_mtok_usd": 0.15,
+    "output_per_mtok_usd": 0.6,
+    "cache_read_per_mtok_usd": 0.003,
+    "note": "off-peak; peak 2x; peak 01:00-04:00 & 06:00-10:00 UTC Mon-Fri",
+    "updated": "2026-11"
+  },
+  "endpoints": {
+    "base_url": "https://api.deepseek.com",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://api-docs.deepseek.com/",
+  "sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing",
+    "https://api-docs.deepseek.com/api/create-chat-completion"
+  ],
+  "unverified_fields": []
+}

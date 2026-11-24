@@ -1,0 +1,52 @@
+{
+  "id": "glm-5.2",
+  "provider": "zai",
+  "family": "zai",
+  "display_name": "GLM-5.2",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 400000,
+  "max_output_tokens": 128000,
+  "features": {
+    "vision": false,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "reasoning_effort": {
+      "supported": true
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.z.ai/api/paas/v4",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://docs.z.ai/",
+  "sources": [
+    "https://z.ai/blog/glm-5.2",
+    "https://docs.z.ai/"
+  ],
+  "unverified_fields": [
+    "max_output_tokens",
+    "params.temperature"
+  ]
+}

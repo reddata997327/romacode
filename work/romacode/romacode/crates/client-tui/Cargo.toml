@@ -1,0 +1,37 @@
+[package]
+name = "romacode"
+version = "0.8.1"
+edition = "2021"
+description = "RomaCode client TUI — the screen: connects to romacode-server and draws the session"
+license = "MIT"
+rust-version = "1.80"
+
+[[bin]]
+name = "romacode"
+path = "src/main.rs"
+
+[dependencies]
+romacode-shared = { workspace = true }
+romacode-providers = { path = "../providers" }
+anyhow = { workspace = true }
+serde_json = { workspace = true }
+ratatui = { version = "=0.26.3", default-features = false, features = ["crossterm"] }
+crossterm = "=0.27.0"
+unicode-width = "=0.1.12"
+png = "0.17"
+base64 = "0.22"
+minifb = "0.27"
+portable-pty = "0.8"
+rox-protocol = { workspace = true }
+rox-vt = { workspace = true }
+# RomaCode tools builder — surfaced in the Ctrl+P "Tools" settings section.
+rc-core = { workspace = true }
+rc-builtin = { workspace = true }
+rc-sources = { workspace = true }
+rc-lifecycle = { workspace = true }
+rc-docs-source = { workspace = true }
+# A tokio runtime to drive the (async) tool executor from the sync TUI loop.
+tokio = { workspace = true }
+
+[dev-dependencies]
+serde = { workspace = true }

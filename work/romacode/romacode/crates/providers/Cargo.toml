@@ -1,0 +1,21 @@
+[package]
+name = "romacode-providers"
+version = "0.8.1"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+publish = false
+description = "OpenCode-structured provider/model subsystem for RomaCode (schema types, adapters, native HTTP client with retry policy, dynamic catalog). Pure Rust, std-only transport."
+
+[lib]
+name = "romacode_providers"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# The HTTP client, retry policy, and adapters are std-only. No reqwest/hyper/
+# tokio — matches the RomaCode zero-extra-deps philosophy. TLS for HTTPS
+# catalog fetch is deferred to the curl fallback path in the server; the
+# retry policy itself (the load-bearing resilience piece) is fully wired.

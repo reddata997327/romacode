@@ -1,0 +1,48 @@
+{
+  "id": "claude-3-7-sonnet-20250219",
+  "provider": "anthropic",
+  "family": "anthropic",
+  "display_name": "Claude 3.7 Sonnet",
+  "api": "anthropic",
+  "status": "legacy",
+  "context_window": 200000,
+  "max_output_tokens": 64000,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.anthropic.com",
+    "chat": "/v1/messages",
+    "models": "/v1/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.claude.com/docs/en/models/overview",
+  "sources": [
+    "https://platform.claude.com/docs/en/models/overview"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}

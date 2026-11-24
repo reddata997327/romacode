@@ -1,0 +1,51 @@
+{
+  "id": "qwen3.8-flash",
+  "provider": "qwen",
+  "family": "qwen",
+  "display_name": "Qwen3.8 Flash",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 1000000,
+  "max_output_tokens": 65536,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "reasoning_effort": {
+      "supported": true
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://qwen.ai/apiplatform",
+  "sources": [
+    "https://qwen.ai/apiplatform"
+  ],
+  "unverified_fields": [
+    "id",
+    "max_output_tokens"
+  ]
+}

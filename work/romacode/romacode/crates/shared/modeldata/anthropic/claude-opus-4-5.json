@@ -1,0 +1,56 @@
+{
+  "id": "claude-opus-4-5",
+  "provider": "anthropic",
+  "family": "anthropic",
+  "display_name": "Claude Opus 4.5",
+  "api": "anthropic",
+  "status": "stable",
+  "context_window": 200000,
+  "max_output_tokens": 64000,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "reasoning_effort": {
+      "supported": true
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "temperature_or_top_p_exclusive": false,
+    "stop_supported": true
+  },
+  "pricing": {
+    "input_per_mtok_usd": 5.0,
+    "output_per_mtok_usd": 25.0,
+    "note": "launch pricing",
+    "updated": "2025-11"
+  },
+  "endpoints": {
+    "base_url": "https://api.anthropic.com",
+    "chat": "/v1/messages",
+    "models": "/v1/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.claude.com/docs/en/models/overview",
+  "sources": [
+    "https://platform.claude.com/docs/en/models/overview"
+  ],
+  "unverified_fields": [
+    "pricing"
+  ]
+}

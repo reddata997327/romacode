@@ -1,0 +1,15 @@
+[package]
+name = "rc-docs-source"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "RomaCode tools-builder ToolSource for the built-in documents engine (rc-docs) — shared by the brain and the TUI Tools screen"
+
+[dependencies]
+rc-core = { workspace = true }
+rc-sources = { workspace = true }
+rc-docs = { workspace = true }
+async-trait = { workspace = true }
+serde_json = { workspace = true }

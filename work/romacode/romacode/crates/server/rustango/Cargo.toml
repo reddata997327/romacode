@@ -1,0 +1,49 @@
+[package]
+name = "rustango"
+version = "6.2.0-dev"
+edition = "2021"
+rust-version = "1.85"
+description = "Django-style batteries-included web framework, rewritten in pure Rust (no C/C++ dependencies)"
+license = "BSD-3-Clause"
+keywords = ["web", "framework", "django", "orm", "templates"]
+categories = ["web-programming::http-server"]
+
+[lib]
+name = "rustango"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rustango"
+path = "src/bin/rustango.rs"
+
+[dependencies]
+rustango-macros = { path = "macros", version = "6.2.0-dev" }
+# Async edge only (HTTP server). The framework core itself is synchronous,
+# WSGI-style, and runs on blocking worker threads.
+tokio = { version = "1", features = ["rt-multi-thread", "net", "macros", "time", "io-util", "signal", "sync"] }
+axum = { version = "0.8", default-features = false, features = ["http1", "tokio"] }
+
+# Serialization / config
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.9"
+
+# Crypto (RustCrypto - pure Rust)
+sha2 = "0.10"
+hmac = "0.12"
+pbkdf2 = "0.12"
+base64 = "0.22"
+
+# Misc pure-Rust utilities
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+flate2 = { version = "1", default-features = false, features = ["rust_backend"] }
+thiserror = "2"
+
+# contrib.ai (feature-gated): ureq 3.x uses rustls with the `ring` provider,
+# which is 100% Rust. No OpenSSL, no aws-lc-rs C sources.
+ureq = { version = "3", default-features = false, features = ["rustls", "json"], optional = true }
+
+[features]
+default = []
+ai = ["dep:ureq"]

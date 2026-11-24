@@ -1,0 +1,48 @@
+{
+  "id": "kimi-k2-thinking",
+  "provider": "moonshot",
+  "family": "moonshot",
+  "display_name": "Kimi K2 Thinking",
+  "api": "openai",
+  "status": "legacy",
+  "context_window": 262144,
+  "max_output_tokens": 98304,
+  "features": {
+    "vision": false,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.moonshot.ai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.kimi.ai/docs",
+  "sources": [
+    "https://platform.kimi.ai/docs"
+  ],
+  "unverified_fields": [
+    "status",
+    "id"
+  ]
+}

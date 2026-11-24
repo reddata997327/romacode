@@ -1,0 +1,48 @@
+{
+  "id": "grok-4.1-fast",
+  "provider": "xai",
+  "family": "xai",
+  "display_name": "Grok 4.1 Fast",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 2000000,
+  "max_output_tokens": 32768,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.x.ai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://docs.x.ai/developers/models",
+  "sources": [
+    "https://x.ai/news/grok-4-1-fast",
+    "https://docs.x.ai/developers/models"
+  ],
+  "unverified_fields": [
+    "max_output_tokens"
+  ]
+}

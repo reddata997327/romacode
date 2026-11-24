@@ -1,0 +1,18 @@
+name: creds-to-pivot
+entry: live
+nodes:
+  - id: live
+    tool: loot_query
+    args: { selector: "creds:live" }
+  - id: tunnel
+    tool: pivot_tunnel
+    needs: [live]
+    args: { creds: "{{creds:live}}" }
+  - id: socks
+    tool: pivot_socks
+    needs: [tunnel]
+    args: {}
+  - id: sweep
+    tool: creds_sweep
+    needs: [socks]
+    args: { via_socks: true }

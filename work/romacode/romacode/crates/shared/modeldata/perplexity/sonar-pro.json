@@ -1,0 +1,49 @@
+{
+  "id": "sonar-pro",
+  "provider": "perplexity",
+  "family": "perplexity",
+  "display_name": "Sonar Pro (Perplexity)",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 200000,
+  "max_output_tokens": 8192,
+  "features": {
+    "vision": false,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": false,
+    "prefix_caching": true,
+    "web_search": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.perplexity.ai",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://docs.perplexity.ai/",
+  "sources": [
+    "https://docs.perplexity.ai/"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}

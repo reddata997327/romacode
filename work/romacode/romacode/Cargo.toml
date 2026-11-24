@@ -1,0 +1,159 @@
+[workspace]
+members = [
+    "crates/offense/rc-opsec",
+    "crates/offense/rc-forge",
+    "crates/offense/rc-launder",
+    "crates/offense/rc-tx",
+    "crates/offense/rc-card",
+    "crates/offense/rc-loot",
+    "crates/offense/rc-pivot",
+    "crates/offense/rc-creds",
+    "crates/offense/rc-exploit",
+    "crates/offense/rc-recon",
+    "crates/offense/rc-kill",
+    "crates/shared",
+    # Built-in native database engine (vendored dbengine 1.0.0): local
+    # key-addressed store + remote postgres/mysql/redis/http introspection.
+    # Zero extra deps beyond serde_json; std-only wire protocols.
+    "crates/db",
+    # Built-in TCP tunnel (vendored chisel-rs): WebSocket transport, token
+    # auth, forward + reverse port forwarding. Used as DB transport so the
+    # agent can reach remote/cloud databases uniformly. Pure-Rust, std-only.
+    "crates/tunnel",
+    # OpenCode-structured provider/model subsystem: schema types, adapters,
+    # native HTTP client with the OpenCode retry policy (10 retries, jitter,
+    # Retry-After, unreachable budget), dynamic catalog with bundled fallback.
+    "crates/providers",
+    "crates/server",
+    # Built-in documents engine (vendored rc-docs 1.0.0): Word/Excel/PowerPoint
+    # writers+readers, PDF writer (embedded TTF) + reader (extract/merge/split),
+    # chart rasterizer, canvas design engine and the Figma REST client — all
+    # pure Rust, no external binaries.
+    "crates/documents",
+    "crates/server/langchain",
+    "crates/server/mandroid",
+    "crates/server/phone",
+    "crates/server/rustango",
+    "crates/server/rustango/macros",
+    "crates/server/roxterm/crates/rox-protocol",
+    "crates/server/roxterm/crates/rox-graphics",
+    "crates/server/roxterm/crates/rox-vt",
+    "crates/client-tui",
+    # RomaCode tools builder framework (integrated) — 8 universal tool sources,
+    # 5 composition primitives, a lifecycle manager. Surfaced in the Ctrl+P
+    # settings panel under the "Tools" section.
+    "crates/rc-tools/rc-core",
+    "crates/rc-tools/rc-builtin",
+    "crates/rc-tools/rc-dsd",
+    "crates/rc-tools/rc-sources",
+    "crates/rc-tools/rc-compose",
+    "crates/rc-tools/rc-lifecycle",
+    # The Rust language pack + framework entry point — eight `rust.*`
+    # developer-workflow tools (cargo check/test/build/fmt/clippy/doc,
+    # toolchain, fmt_file) and a re-export of the whole rc-* surface. A
+    # parallel Python implementation lives under `crates/rc-tools/rc-python/`
+    # (not a Cargo member — it is a standalone PEP 517 package).
+    "crates/rc-tools/rc-rust",
+    # Documents-engine ToolSource bridge: registers rc-docs tools with the
+    # rc-tools lifecycle (server gateway + TUI Tools screen share it).
+    "crates/rc-tools/rc-docs-source",
+    # Remix/rrx Ethereum toolchain — first-party workspace members (upstream
+    # remix-rust 0.8.0, folded in verbatim). Ten libraries (util → bls381 →
+    # crypto/trie/precompiles → evm → chain → solc/rpc → tools) plus the rrx
+    # CLI binary. One `cargo build --release` now produces both the server and
+    # the rrx binary the remix engine discovers (sibling in target/release/).
+    "crates/remix/rrx-util",
+    "crates/remix/rrx-bls381",
+    "crates/remix/rrx-crypto",
+    "crates/remix/rrx-trie",
+    "crates/remix/rrx-precompiles",
+    "crates/remix/rrx-evm",
+    "crates/remix/rrx-chain",
+    "crates/remix/rrx-solc",
+    "crates/remix/rrx-rpc",
+    "crates/remix/rrx-tools",
+    "crates/remix/rrx-cli",
+]
+resolver = "2"
+
+# Package defaults inherited by the rc-* crates via `version.workspace = true`
+# etc. Existing RomaCode crates set their own `[package]` fields directly, so
+# this table does not change them.
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+publish = false
+
+[workspace.dependencies]
+romacode-shared = { path = "crates/shared" }
+rc-docs = { path = "crates/documents" }
+langchain-rust = { path = "crates/server/langchain" }
+rustango = { path = "crates/server/rustango" }
+mandroid = { path = "crates/server/mandroid" }
+phone = { path = "crates/server/phone" }
+rox-protocol = { path = "crates/server/roxterm/crates/rox-protocol" }
+rox-vt = { path = "crates/server/roxterm/crates/rox-vt" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+anyhow = "1"
+async-trait = "0.1"
+thiserror = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "fs", "process", "io-util", "time", "sync"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+# Tools builder (rc-*) cross-deps — path entries so client-tui can opt in.
+rc-core = { path = "crates/rc-tools/rc-core" }
+rc-builtin = { path = "crates/rc-tools/rc-builtin" }
+rc-dsd = { path = "crates/rc-tools/rc-dsd" }
+rc-sources = { path = "crates/rc-tools/rc-sources" }
+rc-compose = { path = "crates/rc-tools/rc-compose" }
+rc-lifecycle = { path = "crates/rc-tools/rc-lifecycle" }
+rc-rust = { path = "crates/rc-tools/rc-rust" }
+rc-docs-source = { path = "crates/rc-tools/rc-docs-source" }
+# rrx (Remix toolset) internal deps — path entries into crates/remix/.
+rrx-util = { path = "crates/remix/rrx-util" }
+rrx-bls381 = { path = "crates/remix/rrx-bls381" }
+rrx-crypto = { path = "crates/remix/rrx-crypto" }
+rrx-trie = { path = "crates/remix/rrx-trie" }
+rrx-precompiles = { path = "crates/remix/rrx-precompiles" }
+rrx-evm = { path = "crates/remix/rrx-evm" }
+rrx-chain = { path = "crates/remix/rrx-chain" }
+rrx-solc = { path = "crates/remix/rrx-solc" }
+rrx-rpc = { path = "crates/remix/rrx-rpc" }
+rrx-tools = { path = "crates/remix/rrx-tools" }
+# rrx external deps — versions/features carried over from upstream
+# remix-rust 0.8.0's own [workspace.dependencies] (serde/serde_json are
+# already declared above and shared).
+primitive-types = "0.13"
+tiny-keccak = { version = "2.0", features = ["keccak"] }
+hex = "0.4"
+k256 = { version = "0.13", features = ["ecdsa"] }
+rand_core = { version = "0.6", features = ["std"] }
+sha2 = "0.10"
+ripemd = "0.1"
+num-bigint = "0.4"
+num-traits = "0.2"
+substrate-bn = "0.6"
+walkdir = "2"
+regex = "1"
+clap = { version = "4", features = ["derive"] }
+ureq = { version = "2", features = ["json"] }
+tiny_http = "0.12"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+
+# Test binaries carry no debuginfo: the workspace's debug test links are
+# ~10x smaller and fit a 10 GB sandbox (full debuginfo blew the disk).
+[profile.dev]
+debug = 0
+
+# Carried over from upstream remix-rust: crypto/bn math stays fast in test
+# and debug builds (k256, substrate-bn, num-bigint are unusably slow at O0).
+[profile.dev.package."*"]
+opt-level = 2

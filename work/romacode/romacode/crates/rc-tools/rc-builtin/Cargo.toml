@@ -1,0 +1,16 @@
+[package]
+name = "rc-builtin"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "RomaCode tools builder — built-in tool categories: code, file, web, data, system, math, text, time"
+
+[dependencies]
+rc-core = { workspace = true }
+rc-dsd = { workspace = true }
+serde_json = { workspace = true }
+reqwest = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }

@@ -1,0 +1,13 @@
+[package]
+name = "rox-protocol"
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+description = "Roxterm shared terminal grid and protocol models"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+postcard = { version = "1", features = ["use-std"] }
+thiserror = "2"
+humantime-serde = "1"
+uuid = { version = "1", features = ["v4", "serde"] }

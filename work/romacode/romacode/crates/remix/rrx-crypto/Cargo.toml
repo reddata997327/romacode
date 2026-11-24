@@ -1,0 +1,10 @@
+[package]
+name = "rrx-crypto"
+version = "0.8.0"
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rrx-util.workspace = true
+k256.workspace = true
+rand_core.workspace = true

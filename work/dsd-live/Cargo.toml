@@ -1,0 +1,20 @@
+[package]
+name = "dsd-live"
+version = "0.1.0"
+edition = "2021"
+# Custom-built live tracing tool. Every protocol piece below is hand-rolled:
+#   - HTTP head parsing  (no httparse)
+#   - JSON output        (no serde)
+#   - argument parsing   (no clap)
+#   - HTTP client/server (no reqwest/hyper/tiny_http)
+#   - PostgreSQL client  (no tokio-postgres/sqlx) — minimal wire protocol
+# Only tokio (async runtime) and rustls (TLS plumbing) are external; the TLS
+# verifier is custom (skip-verify) because this is a tracing tool.
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "macros", "time", "sync"] }
+tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "tls12"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+
+[profile.release]
+opt-level = 2

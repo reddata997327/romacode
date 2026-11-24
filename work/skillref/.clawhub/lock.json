@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "skills": {
+    "@lura2/canvas": {
+      "version": "1.0.0",
+      "installedAt": 1795528219971,
+      "ownerHandle": "lura2"
+    },
+    "@maton/figma": {
+      "version": "1.2.7",
+      "installedAt": 1795528227220,
+      "ownerHandle": "maton"
+    },
+    "@thcjp/canvas-design": {
+      "version": "1.0.2",
+      "installedAt": 1795528230641,
+      "ownerHandle": "thcjp"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[package]
+name = "rox-vt"
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+description = "Roxterm VT parser, screen grid, and scrollback"
+
+[dependencies]
+rox-protocol = { path = "../rox-protocol" }
+rox-graphics = { path = "../rox-graphics" }
+vte = "0.13"
+unicode-width = "0.2"
+serde = { version = "1", features = ["derive"] }
+base64 = "0.22"

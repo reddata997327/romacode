@@ -1,0 +1,39 @@
+{
+  "id": "_provider",
+  "provider": "sambanova",
+  "family": "sambanova",
+  "display_name": "SambaNova (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 131072,
+  "max_output_tokens": 8192,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.sambanova.ai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://docs.sambanova.ai/",
+  "sources": [
+    "https://docs.sambanova.ai/"
+  ],
+  "unverified_fields": []
+}

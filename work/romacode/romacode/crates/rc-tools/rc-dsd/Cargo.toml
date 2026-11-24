@@ -1,0 +1,21 @@
+[package]
+name = "rc-dsd"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rc-core = { workspace = true }
+serde_json = { workspace = true }
+async-trait = { workspace = true }
+# "net" is additive on the workspace tokio — enables TcpListener/TcpStream.
+tokio = { workspace = true, features = ["net"] }
+# The vendored std-only wire-protocol clients (postgres/mysql/http) power the
+# live database monitors — no external client crates needed.
+romacode-db = { path = "../../db" }
+# TLS upstream support for the tap (https:// domains): the same stack reqwest
+# uses, so it is already in the dependency tree — no new build cost.
+tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "tls12"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+
+[dev-dependencies]
+rc-builtin = { workspace = true }

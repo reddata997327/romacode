@@ -1,0 +1,32 @@
+name: web-to-shell
+entry: scan
+nodes:
+  - id: scan
+    tool: recon_scan
+    args: { target: "{{scope}}" }
+  - id: probe
+    tool: recon_http_probe
+    needs: [scan]
+    args: { services: "{{services:open}}" }
+  - id: fp
+    tool: recon_fingerprint
+    needs: [probe]
+    args: { services: "{{services:open}}" }
+    on_fail: Skip
+  - id: match
+    tool: exploit_match
+    needs: [fp]
+    args: { vulns: "{{vulns}}" }
+  - id: fire
+    tool: exploit_run
+    needs: [match]
+    args: { vulns: "{{vulns:exploitable}}" }
+    on_fail: Fallback(creds)
+  - id: creds
+    tool: creds_spray
+    needs: [probe]
+    args: { services: "{{services:open}}" }
+  - id: loot
+    tool: loot_export
+    needs: [fire, creds]
+    args: { dest: "out" }

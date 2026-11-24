@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rc-python"
+version = "0.1.0"
+description = "RomaCode tools builder — a full Python implementation of the rc-* framework (core/schema/registry/permissions/sandbox/validator/executor/manifest/sources/compose/lifecycle) plus a Python language tool pack."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "RomaCode" }]
+keywords = ["tools", "framework", "agent", "roma-code"]
+# Deliberately stdlib-only at runtime: every dependency below is a dev/test
+# convenience, not a runtime requirement.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-asyncio>=0.21"]
+
+[project.urls]
+Homepage = "https://example.invalid/romacode"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["rc_python*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

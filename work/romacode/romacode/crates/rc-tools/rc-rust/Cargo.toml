@@ -1,0 +1,23 @@
+[package]
+name = "rc-rust"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "RomaCode tools builder — Rust language pack + framework entry point. Ships rust.* dev tools (cargo check/test/build/fmt/clippy/doc, toolchain, fmt_file) and re-exports the whole rc-* surface in one crate."
+
+[dependencies]
+rc-core = { workspace = true }
+rc-builtin = { workspace = true }
+rc-sources = { workspace = true }
+rc-compose = { workspace = true }
+rc-lifecycle = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }

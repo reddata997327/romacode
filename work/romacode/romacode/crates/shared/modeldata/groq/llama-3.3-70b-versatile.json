@@ -1,0 +1,48 @@
+{
+  "id": "llama-3.3-70b-versatile",
+  "provider": "groq",
+  "family": "groq",
+  "display_name": "Llama 3.3 70B Versatile (Groq)",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 131072,
+  "max_output_tokens": 32768,
+  "features": {
+    "vision": false,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": false,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.groq.com/openai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://console.groq.com/docs/models",
+  "sources": [
+    "https://console.groq.com/docs/models"
+  ],
+  "unverified_fields": [
+    "max_output_tokens",
+    "status"
+  ]
+}

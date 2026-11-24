@@ -1,0 +1,54 @@
+{
+  "id": "kimi-k3",
+  "provider": "moonshot",
+  "family": "moonshot",
+  "display_name": "Kimi K3",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 1000000,
+  "max_output_tokens": 131072,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": {
+    "input_per_mtok_usd": 3.0,
+    "output_per_mtok_usd": 15.0,
+    "cache_write_per_mtok_usd": 3.0,
+    "cache_read_per_mtok_usd": 0.3,
+    "updated": "2026-11"
+  },
+  "endpoints": {
+    "base_url": "https://api.moonshot.ai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.kimi.ai/docs",
+  "sources": [
+    "https://platform.kimi.ai"
+  ],
+  "unverified_fields": [
+    "max_output_tokens",
+    "id"
+  ]
+}

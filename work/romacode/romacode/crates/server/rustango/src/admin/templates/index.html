@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% block title %}Site administration | {{ site_title }}{% endblock %}
+{% block content %}
+<h1>Site administration</h1>
+<table>
+  <tr><th>Model</th><th>Objects</th><th></th></tr>
+  {% for m in models %}
+  <tr>
+    <td><a href="{{ admin_prefix }}/{{ m.name }}/">{{ m.name }}</a></td>
+    <td>{{ m.count }}</td>
+    <td><a href="{{ admin_prefix }}/{{ m.name }}/add/">Add</a></td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="3">No models registered.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

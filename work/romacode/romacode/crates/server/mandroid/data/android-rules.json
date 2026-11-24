@@ -1,0 +1,174 @@
+{
+  "version": "1.0.0",
+  "_meta": {
+    "schema": 1,
+    "version": "2026.10.06",
+    "notes": "Android static-analysis rules. The engine implements the checks; this table owns the judgement (severity, CWE, detail, remediation) so operators can tune it without a rebuild. Override with DROID_RULES=<path>.",
+    "severities": ["critical", "high", "medium", "low", "info"]
+  },
+  "secret_patterns": [
+    { "id": "aws-access-key", "title": "AWS access key id", "severity": "critical", "cwe": "CWE-798", "regex": "AKIA[0-9A-Z]{16}" },
+    { "id": "google-api-key", "title": "Google API key", "severity": "high", "cwe": "CWE-798", "regex": "AIza[0-9A-Za-z_\\-]{35}" },
+    { "id": "slack-token", "title": "Slack token", "severity": "high", "cwe": "CWE-798", "regex": "xox[baprs]-[0-9A-Za-z\\-]{10,}" },
+    { "id": "stripe-secret", "title": "Stripe secret key", "severity": "critical", "cwe": "CWE-798", "regex": "sk_live_[0-9a-zA-Z]{24,}" },
+    { "id": "private-key", "title": "Embedded private key", "severity": "critical", "cwe": "CWE-321", "regex": "-----BEGIN (RSA |EC |OPENSSH |PGP )?PRIVATE KEY-----" },
+    { "id": "jwt", "title": "Hardcoded JWT", "severity": "medium", "cwe": "CWE-798", "regex": "eyJ[A-Za-z0-9_\\-]{10,}\\.[A-Za-z0-9_\\-]{10,}\\.[A-Za-z0-9_\\-]{10,}" },
+    { "id": "firebase-db", "title": "Firebase database URL", "severity": "medium", "cwe": "CWE-200", "regex": "https://[a-z0-9\\-]+\\.firebaseio\\.com" }
+  ],
+  "rules": [
+    {
+      "id": "app-debuggable",
+      "title": "Application is debuggable",
+      "severity": "high",
+      "category": "insecure-configuration",
+      "cwe": "CWE-489",
+      "detail": "android:debuggable=\"true\" lets any user with adb attach a debugger, read app memory, and run code as the app. Release builds must not ship it.",
+      "remediation": "Remove android:debuggable from the release manifest (it is injected by debug build types only).",
+      "check": { "kind": "application_flag", "flag": "debuggable", "equals": true }
+    },
+    {
+      "id": "app-allow-backup",
+      "title": "Application data is backup-able",
+      "severity": "medium",
+      "category": "data-exposure",
+      "cwe": "CWE-530",
+      "detail": "android:allowBackup is not false, so the app's private data can be extracted with `adb backup` (device access required). On Android 12+ this is partly restricted, and auto-backup to cloud is separate.",
+      "remediation": "Set android:allowBackup=\"false\", or scope what is included with android:dataExtractionRules / android:fullBackupContent.",
+      "check": { "kind": "attribute_not_false", "attribute": "allowBackup" }
+    },
+    {
+      "id": "cleartext-traffic",
+      "title": "Cleartext HTTP traffic permitted",
+      "severity": "high",
+      "category": "transport-security",
+      "cwe": "CWE-319",
+      "detail": "android:usesCleartextTraffic=\"true\" allows unencrypted HTTP. On a hostile network this exposes and permits tampering with all app traffic.",
+      "remediation": "Remove the attribute (default is false since API 28) or add a network security config that pins exceptions.",
+      "check": { "kind": "application_flag", "flag": "uses_cleartext_traffic", "equals": true }
+    },
+    {
+      "id": "no-network-security-config",
+      "title": "No network security config",
+      "severity": "low",
+      "category": "transport-security",
+      "cwe": "CWE-295",
+      "detail": "The app declares no android:networkSecurityConfig, so there is no certificate pinning or cleartext policy the app controls. This is a hardening gap, not a vulnerability by itself.",
+      "remediation": "Add a network security config with cleartext disabled and pins for sensitive hosts.",
+      "check": { "kind": "attribute_absent", "attribute": "networkSecurityConfig" }
+    },
+    {
+      "id": "legacy-external-storage",
+      "title": "Legacy external storage requested",
+      "severity": "low",
+      "category": "insecure-configuration",
+      "cwe": "CWE-276",
+      "detail": "android:requestLegacyExternalStorage=\"true\" opts out of scoped storage, widening the shared-storage attack surface on Android 10.",
+      "remediation": "Migrate to scoped storage and remove the flag.",
+      "check": { "kind": "application_flag", "flag": "request_legacy_external_storage", "equals": true }
+    },
+    {
+      "id": "min-sdk-too-low",
+      "title": "Minimum SDK below 24",
+      "severity": "medium",
+      "category": "platform-hardening",
+      "cwe": "CWE-1104",
+      "detail": "minSdkVersion below 24 supports platforms that no longer receive security patches and predate many modern mitigations.",
+      "remediation": "Raise minSdkVersion to a currently supported API level.",
+      "check": { "kind": "sdk_below", "field": "min_sdk", "value": 24 }
+    },
+    {
+      "id": "target-sdk-too-low",
+      "title": "Target SDK below 31",
+      "severity": "medium",
+      "category": "platform-hardening",
+      "cwe": "CWE-1104",
+      "detail": "targetSdkVersion below 31 keeps implicit-export semantics and skips several platform security defaults (exported requirement, pending-intent mutability, backup restrictions).",
+      "remediation": "Raise targetSdkVersion to a currently required level (Google Play requires API 36 as of Aug 2026).",
+      "check": { "kind": "sdk_below", "field": "target_sdk", "value": 31 }
+    },
+    {
+      "id": "exported-activity-no-permission",
+      "title": "Exported activity without a permission guard",
+      "severity": "high",
+      "category": "component-exposure",
+      "cwe": "CWE-926",
+      "detail": "The activity is reachable by any other app on the device. If it exposes privileged functionality or accepts parameters, another app can drive it.",
+      "remediation": "Set android:exported=\"false\" unless external invocation is required; otherwise gate it with a signature-level permission.",
+      "check": { "kind": "exported_component", "component": "activity" }
+    },
+    {
+      "id": "exported-service-no-permission",
+      "title": "Exported service without a permission guard",
+      "severity": "high",
+      "category": "component-exposure",
+      "cwe": "CWE-926",
+      "detail": "Any app can bind to or start this service, reaching whatever it exposes.",
+      "remediation": "Set android:exported=\"false\" or require a signature-level permission.",
+      "check": { "kind": "exported_component", "component": "service" }
+    },
+    {
+      "id": "exported-receiver-no-permission",
+      "title": "Exported broadcast receiver without a permission guard",
+      "severity": "medium",
+      "category": "component-exposure",
+      "cwe": "CWE-926",
+      "detail": "Any app can send broadcasts to this receiver, invoking its logic with attacker-controlled intent extras.",
+      "remediation": "Set android:exported=\"false\" or gate it with a permission.",
+      "check": { "kind": "exported_component", "component": "receiver" }
+    },
+    {
+      "id": "exported-provider-no-permission",
+      "title": "Exported content provider without a permission guard",
+      "severity": "critical",
+      "category": "component-exposure",
+      "cwe": "CWE-926",
+      "detail": "Any app can query or modify this provider's data. Providers are the highest-impact exported component: they carry data and sometimes file access.",
+      "remediation": "Set android:exported=\"false\", or require read/write permissions.",
+      "check": { "kind": "exported_component", "component": "provider" }
+    },
+    {
+      "id": "provider-grant-uri-permissions",
+      "title": "Exported provider grants URI permissions",
+      "severity": "high",
+      "category": "component-exposure",
+      "cwe": "CWE-22",
+      "detail": "The provider is exported and allows URI permission grants. Combined with weak path handling this is the classic content-provider path traversal.",
+      "remediation": "Validate canonical paths against an allowlist, avoid openFile with unchecked segments, and keep the provider unexported if possible.",
+      "check": { "kind": "provider_grant_uri" }
+    },
+    {
+      "id": "implicit-export",
+      "title": "Component implicitly exported by an intent filter",
+      "severity": "high",
+      "category": "component-exposure",
+      "cwe": "CWE-926",
+      "detail": "The component has an intent filter and does not declare android:exported. Before API 31 that made it exported; from API 31 the attribute is required, so this app is relying on legacy behaviour.",
+      "remediation": "Declare android:exported explicitly on every component with an intent filter.",
+      "check": { "kind": "implicit_export_component" }
+    },
+    {
+      "id": "dangerous-permission",
+      "title": "Requests a dangerous or high-impact permission",
+      "severity": "info",
+      "category": "permissions",
+      "cwe": "CWE-250",
+      "detail": "The app requests a permission that materially widens what a compromise of the app gives an attacker. Context for the rest of the report, not a defect on its own.",
+      "remediation": "Confirm each high-impact permission is required for a user-facing feature.",
+      "check": {
+        "kind": "dangerous_permission",
+        "permissions": [
+          "android.permission.SYSTEM_ALERT_WINDOW",
+          "android.permission.MANAGE_EXTERNAL_STORAGE",
+          "android.permission.WRITE_SETTINGS",
+          "android.permission.REQUEST_INSTALL_PACKAGES",
+          "android.permission.ACCESS_BACKGROUND_LOCATION",
+          "android.permission.READ_SMS",
+          "android.permission.RECEIVE_SMS",
+          "android.permission.CALL_PHONE",
+          "android.permission.PACKAGE_USAGE_STATS",
+          "android.permission.BIND_ACCESSIBILITY_SERVICE"
+        ]
+      }
+    }
+  ]
+}

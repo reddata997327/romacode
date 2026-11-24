@@ -1,0 +1,53 @@
+{
+  "id": "claude-fable-5-2",
+  "provider": "anthropic",
+  "family": "anthropic",
+  "display_name": "Claude Fable 5.2",
+  "api": "anthropic",
+  "status": "stable",
+  "context_window": 1000000,
+  "max_output_tokens": 128000,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "reasoning_effort": {
+      "supported": true
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "temperature_or_top_p_exclusive": false,
+    "stop_supported": true
+  },
+  "pricing": {
+    "input_per_mtok_usd": 8.0,
+    "output_per_mtok_usd": 40.0,
+    "updated": "2026-11"
+  },
+  "endpoints": {
+    "base_url": "https://api.anthropic.com",
+    "chat": "/v1/messages",
+    "models": "/v1/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.claude.com/docs/en/models/overview",
+  "sources": [
+    "https://platform.claude.com/docs/en/models/overview"
+  ],
+  "unverified_fields": []
+}

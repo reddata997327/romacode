@@ -1,0 +1,42 @@
+{
+  "id": "_provider",
+  "provider": "google",
+  "family": "google",
+  "display_name": "Google Gemini (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 1000000,
+  "max_output_tokens": 65536,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://aistudio.google.com/docs/models",
+  "sources": [
+    "https://aistudio.google.com/docs/models"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}

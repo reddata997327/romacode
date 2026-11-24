@@ -1,0 +1,11 @@
+[package]
+name = "romacode-shared"
+version = "0.8.1"
+edition = "2021"
+description = "RomaCode shared contract: wire protocol and streamed event types used by both the server (the brain) and the client TUI (the screen)"
+license = "MIT"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+romacode-providers = { path = "../providers" }

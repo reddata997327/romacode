@@ -1,0 +1,41 @@
+{
+  "id": "_provider",
+  "provider": "openrouter",
+  "family": "openrouter",
+  "display_name": "OpenRouter (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 200000,
+  "max_output_tokens": 64000,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://openrouter.ai/api/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [
+    "Aggregator: model ids carry vendor/ prefixes and tags; family routing resolves them to the vendor profile"
+  ],
+  "docs": "https://openrouter.ai/docs",
+  "sources": [
+    "https://openrouter.ai/docs"
+  ],
+  "unverified_fields": []
+}

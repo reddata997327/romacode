@@ -1,0 +1,50 @@
+[package]
+name = "romacode-server"
+version = "0.8.1"
+edition = "2021"
+description = "RomaCode server — the brain: agent loop (native + langchain engines), sessions, security gate, tools and engines, served over HTTP/WS"
+license = "MIT"
+rust-version = "1.80"
+
+[lib]
+name = "romacode_server"
+path = "src/lib.rs"
+
+[[bin]]
+name = "romacode-server"
+path = "src/main.rs"
+
+[dependencies]
+romacode-shared = { workspace = true }
+romacode-db = { path = "../db" }
+romacode-tunnel = { path = "../tunnel" }
+romacode-providers = { path = "../providers" }
+# The built-in documents engine (Word/Excel/PowerPoint/PDF/charts/canvas/
+# Figma) — vendored pure Rust, surfaced as builtin native tools below.
+rc-docs = { workspace = true }
+rc-docs-source = { workspace = true }
+# The RomaCode tools builder: the same catalog the Ctrl+P Tools section shows,
+# now reachable by the agent through the `rc_tools` gateway tool.
+rc-core = { workspace = true }
+rc-lifecycle = { workspace = true }
+rc-sources = { workspace = true }
+rc-builtin = { workspace = true }
+rc-rust = { workspace = true }
+langchain-rust = { workspace = true }
+rustango = { workspace = true }
+mandroid = { workspace = true }
+phone = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+dirs = "5"
+png = "0.17"
+base64 = "0.22"
+async-trait = "0.1"
+tokio = { version = "1", default-features = false, features = ["rt"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[dev-dependencies]
+tempfile = "3"

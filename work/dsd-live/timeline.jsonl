@@ -1,0 +1,10 @@
+{"ev":"TAP","t_ms":0.0,"listen":"127.0.0.1:8807","upstream":"https://a898rkp.pkr898.com:443","tls":"true"}
+{"ev":"ENTRY","t_ms":777.2,"n":"1","peer":"127.0.0.1:45926","m":"POST","path":"/hall/api/member/login","host":"a898rkp.pkr898.com","clen":"533"}
+{"ev":"EXIT","t_ms":1296.3,"n":"1","status":"200","ms":"519.2","rlen":"chunked","server":"-","reqB":"1566","respB":"1517"}
+{"ev":"ENTRY","t_ms":1321.6,"n":"1","peer":"127.0.0.1:45930","m":"POST","path":"/hall/api/member/login","host":"a898rkp.pkr898.com","clen":"557"}
+{"ev":"EXIT","t_ms":1378.7,"n":"1","status":"200","ms":"57.1","rlen":"119","server":"-","reqB":"1590","respB":"859"}
+{"ev":"TAP","t_ms":0.0,"listen":"127.0.0.1:8807","upstream":"https://a898rkp.pkr898.com:443","tls":"true"}
+{"ev":"ENTRY","t_ms":825.5,"n":"1","peer":"127.0.0.1:58730","m":"POST","path":"/hall/api/member/login","host":"a898rkp.pkr898.com","clen":"533"}
+{"ev":"EXIT","t_ms":1314.8,"n":"1","status":"200","ms":"489.4","rlen":"chunked","server":"-","reqB":"1566","respB":"1517"}
+{"ev":"ENTRY","t_ms":1342.7,"n":"1","peer":"127.0.0.1:58738","m":"POST","path":"/hall/api/member/login","host":"a898rkp.pkr898.com","clen":"557"}
+{"ev":"EXIT","t_ms":1473.6,"n":"1","status":"200","ms":"130.8","rlen":"159","server":"-","reqB":"1590","respB":"928"}

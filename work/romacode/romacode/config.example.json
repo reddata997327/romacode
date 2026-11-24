@@ -1,0 +1,265 @@
+{
+  "version": 2,
+  "provider": "anthropic",
+  "model": "",
+  "api_key_env": "",
+  "api_base": "",
+  "max_tokens": 4096,
+  "system_prompt": null,
+  "context_window": 200000,
+  "price_in_per_mtok": 3.0,
+  "price_out_per_mtok": 15.0,
+  "chat_width_pct": 36,
+  "sidebar": true,
+  "model_params": {
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "stop_sequences": [],
+    "thinking": false,
+    "thinking_budget_tokens": 8000,
+    "prompt_cache": true,
+    "stream": true,
+    "fallback_models": []
+  },
+  "agent": {
+    "default_mode": "build",
+    "max_tool_rounds": 200,
+    "parallel_tools": true,
+    "tool_timeout_secs": 120,
+    "max_tool_output_bytes": 65536,
+    "auto_compact": true,
+    "compact_threshold_pct": 85,
+    "auto_title": true,
+    "instruction_files": [
+      "ROMACODE.md",
+      "AGENTS.md",
+      "CLAUDE.md"
+    ],
+    "system_prompt_append": null,
+    "persona_file": null,
+    "engine": "native"
+  },
+  "permissions": {
+    "read": "allow",
+    "edit": "allow",
+    "bash": "allow",
+    "web": "allow",
+    "android": "allow",
+    "net": "allow",
+    "allow": [],
+    "ask": [],
+    "deny": [],
+    "protected_paths": [],
+    "confine_to_project": false
+  },
+  "ui": {
+    "theme": "auto",
+    "accent": "",
+    "animations": true,
+    "reduce_motion": false,
+    "mouse": true,
+    "syntax_highlight": true,
+    "line_numbers": true,
+    "diff_style": "unified",
+    "tab_width": 4,
+    "wrap_lines": true,
+    "compact": false,
+    "show_timestamps": false,
+    "show_tokens": true,
+    "show_cost": true,
+    "bell_on_done": false,
+    "scrollback_lines": 5000,
+    "max_fps": 30
+  },
+  "keys": {
+    "send": "enter",
+    "newline": "alt+enter",
+    "interrupt": "esc",
+    "toggle_mode": "tab",
+    "new_session": "ctrl+n",
+    "close_session": "ctrl+w",
+    "palette": "ctrl+p",
+    "side_panel": "ctrl+b",
+    "android": "alt+a",
+    "quit": "ctrl+q",
+    "vim_mode": false,
+    "overrides": {}
+  },
+  "network": {
+    "proxy": "",
+    "connect_timeout_secs": 15,
+    "request_timeout_secs": 0,
+    "max_retries": 2,
+    "retry_backoff_ms": 800,
+    "ca_bundle": "",
+    "user_agent": "",
+    "extra_headers": {}
+  },
+  "sessions": {
+    "restore_on_start": true,
+    "autosave": true,
+    "max_saved": 100,
+    "dir": "",
+    "history_limit": 1000
+  },
+  "privacy": {
+    "telemetry": false,
+    "redact_secrets": true,
+    "save_transcripts": true
+  },
+  "android": {
+    "backend": "adb",
+    "adb_path": "adb",
+    "serial": "",
+    "auto_start": true
+  },
+  "databases": {
+    "tier": "read-only",
+    "remote_enabled": false,
+    "default": "",
+    "home": "",
+    "profiles": []
+  },
+  "advanced": {
+    "log_level": "info",
+    "log_file": "",
+    "env": {},
+    "experimental": {}
+  },
+  "providers": {},
+  "webfetch": {
+    "enabled": true,
+    "default_mode": "text",
+    "max_body_bytes": 4194304,
+    "max_output_chars": 20000,
+    "timeout_secs": 30,
+    "max_redirects": 5,
+    "user_agent": "",
+    "allow_private_hosts": true,
+    "allowed_domains": [],
+    "blocked_domains": [],
+    "render": false,
+    "browser": ""
+  },
+  "rnmap": {
+    "enabled": true,
+    "binary": "",
+    "default_ports": "1-1000",
+    "default_timing": 3,
+    "timeout_secs": 300,
+    "max_targets": 4096,
+    "max_output_chars": 20000,
+    "allow_external_targets": true,
+    "allow_evasion": true,
+    "allow_scripts": true
+  },
+  "browser": {
+    "enabled": true,
+    "binary": "",
+    "host": "127.0.0.1",
+    "port": 0,
+    "headless": true,
+    "accept_insecure_certs": true,
+    "auto_start": true,
+    "start_timeout_secs": 90,
+    "timeout_secs": 120,
+    "extra_args": [],
+    "max_output_chars": 200000
+  },
+  "tui": {
+    "theme": {
+      "name": "opencode",
+      "mode": "system"
+    },
+    "keybinds": {},
+    "plugins": [],
+    "leader": {
+      "timeout": 2000
+    },
+    "scroll": {
+      "speed": 3.0,
+      "acceleration": false
+    },
+    "attention": {
+      "notifications": false,
+      "sound": false,
+      "volume": 0.4,
+      "sound_pack": "opencode.default",
+      "sounds": {}
+    },
+    "diffs": {
+      "source": "branch",
+      "wrap": "word",
+      "tree": true,
+      "single": false,
+      "fullscreen": null,
+      "view": "auto"
+    },
+    "terminal": {
+      "title": true,
+      "copy": "select"
+    },
+    "prompt": {
+      "editor": true,
+      "paste": "compact",
+      "image_preview": false
+    },
+    "session": {
+      "sidebar": "auto",
+      "scrollbar": false,
+      "submit_scroll": "bottom",
+      "thinking": "hide",
+      "grouping": "auto",
+      "verbosity": "low",
+      "image_preview": false,
+      "tps": true,
+      "markdown": "rendered",
+      "new_location": "launch",
+      "permissions": "autoaccept"
+    },
+    "tabs": {
+      "mode": "auto",
+      "scope": "cwd",
+      "layout": "horizontal",
+      "indicators": "status"
+    },
+    "mini": {
+      "thinking": null,
+      "tools": null,
+      "shell_output": null,
+      "turn_summary": null,
+      "footer": null,
+      "splash": null,
+      "work_spinner": null,
+      "mono": null,
+      "replay": null,
+      "replay_limit": null
+    },
+    "debug": {
+      "devtools": false,
+      "timing": false,
+      "turn_tokens": false
+    },
+    "experimental": {},
+    "animations": true,
+    "highlights": true,
+    "mouse": true,
+    "cursor": {
+      "style": "block",
+      "blinking": true
+    }
+  },
+  "remix": {
+    "enabled": true,
+    "binary": "",
+    "rpc": "",
+    "timeout_secs": 300,
+    "max_output_chars": 20000,
+    "allow_chain_writes": false
+  },
+  "documents": {
+    "enabled": true,
+    "max_output_chars": 40000
+  }
+}

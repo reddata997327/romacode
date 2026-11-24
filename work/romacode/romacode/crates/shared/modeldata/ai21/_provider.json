@@ -1,0 +1,42 @@
+{
+  "id": "_provider",
+  "provider": "ai21",
+  "family": "ai21",
+  "display_name": "AI21 Labs (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 256000,
+  "max_output_tokens": 8192,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.ai21.com/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://docs.ai21.com/",
+  "sources": [
+    "https://docs.ai21.com/"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}

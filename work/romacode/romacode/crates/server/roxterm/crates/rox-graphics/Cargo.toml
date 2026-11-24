@@ -1,0 +1,13 @@
+[package]
+name = "rox-graphics"
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+description = "Roxterm Kitty graphics escape parser"
+
+[dependencies]
+rox-protocol = { path = "../rox-protocol" }
+serde = { version = "1", features = ["derive"] }
+base64 = "0.22"
+image = { version = "0.25", default-features = false, features = ["png"] }
+thiserror = "2"

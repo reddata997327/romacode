@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% block title %}{% if is_add %}Add {{ model_name }}{% else %}Change {{ model_name }} {{ pk }}{% endif %} | {{ site_header }}{% endblock %}
+{% block content %}
+<h1>{% if is_add %}Add {{ model_name }}{% else %}Change {{ model_name }} <span class="small">#{{ pk }}</span>{% endif %}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form_html }}
+  <button type="submit" class="btn">Save</button>
+  <a class="btn secondary" href="{{ admin_prefix }}/{{ model_name }}/">Back</a>
+</form>
+{% endblock %}

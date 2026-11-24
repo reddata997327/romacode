@@ -1,0 +1,42 @@
+{
+  "id": "_provider",
+  "provider": "moonshot",
+  "family": "moonshot",
+  "display_name": "Moonshot Kimi (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 1000000,
+  "max_output_tokens": 131072,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.moonshot.ai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://platform.kimi.ai/docs",
+  "sources": [
+    "https://platform.kimi.ai"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}

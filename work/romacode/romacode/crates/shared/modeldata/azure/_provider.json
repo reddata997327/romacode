@@ -1,0 +1,41 @@
+{
+  "id": "_provider",
+  "provider": "azure",
+  "family": "azure",
+  "display_name": "Azure OpenAI (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 128000,
+  "max_output_tokens": 16384,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://YOUR-RESOURCE.openai.azure.com/openai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [
+    "Deployment-scoped: use your deployment name as the model id; per-model limits follow the OpenAI family profiles"
+  ],
+  "docs": "https://learn.microsoft.com/en-us/azure/ai-services/openai/",
+  "sources": [
+    "https://learn.microsoft.com/en-us/azure/ai-services/openai/"
+  ],
+  "unverified_fields": []
+}

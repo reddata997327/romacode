@@ -1,0 +1,56 @@
+{
+  "id": "qwen4-max",
+  "provider": "qwen",
+  "family": "qwen",
+  "display_name": "Qwen4 Max",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 1000000,
+  "max_output_tokens": 65536,
+  "features": {
+    "vision": true,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": true,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "reasoning_effort": {
+      "supported": true
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": {
+    "input_per_mtok_usd": 1.425,
+    "output_per_mtok_usd": 4.275,
+    "updated": "2026-11"
+  },
+  "endpoints": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://qwen.ai/apiplatform",
+  "sources": [
+    "https://openrouter.ai/qwen",
+    "https://qwen.ai/apiplatform"
+  ],
+  "unverified_fields": [
+    "id",
+    "max_output_tokens"
+  ]
+}

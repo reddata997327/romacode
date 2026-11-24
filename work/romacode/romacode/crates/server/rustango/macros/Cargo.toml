@@ -1,0 +1,14 @@
+[package]
+name = "rustango-macros"
+version = "6.2.0-dev"
+edition = "2021"
+description = "Procedural macros for rustango: the #[model] attribute"
+license = "BSD-3-Clause"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "2", default-features = false, features = ["parsing", "proc-macro", "printing", "full", "clone-impls"] }
+quote = "1"
+proc-macro2 = "1"

@@ -1,0 +1,49 @@
+{
+  "id": "mistral-large-3",
+  "provider": "mistral",
+  "family": "mistral",
+  "display_name": "Mistral Large 3",
+  "api": "openai",
+  "status": "stable",
+  "context_window": 256000,
+  "max_output_tokens": 32768,
+  "features": {
+    "vision": false,
+    "tools": true,
+    "json_mode": true,
+    "reasoning": false,
+    "prefix_caching": true
+  },
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.mistral.ai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://docs.mistral.ai/models",
+  "sources": [
+    "https://docs.mistral.ai/resources/known-limitations",
+    "https://docs.mistral.ai/models"
+  ],
+  "unverified_fields": [
+    "max_output_tokens",
+    "id"
+  ]
+}

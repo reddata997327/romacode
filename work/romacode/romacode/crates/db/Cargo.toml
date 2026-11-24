@@ -1,0 +1,20 @@
+[package]
+name = "romacode-db"
+version = "0.8.1"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+publish = false
+description = "Built-in native database engine for RomaCode (key-addressed local store + remote postgres/mysql/redis/http). Vendored from dbengine 1.0.0."
+
+[lib]
+name = "romacode_db"
+path = "src/lib.rs"
+
+[dependencies]
+serde_json = { workspace = true }
+
+# The engine itself is std-only. No sqlx / mongodb / redis crates — the
+# vendored dbengine implements the postgres/mysql/redis wire protocols
+# directly with std::net::TcpStream, matching the RomaCode zero-extra-deps
+# philosophy for self-contained tooling.

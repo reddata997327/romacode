@@ -1,0 +1,26 @@
+[package]
+name = "phone"
+version = "0.1.0"
+edition = "2021"
+description = "RomaCode Phone — built-in Android phone emulator speaking the real ADB wire protocol"
+license = "MIT"
+
+[lib]
+name = "phone"
+path = "src/lib.rs"
+
+[[bin]]
+name = "phone"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rand = "0.8"
+png = "0.17"
+font8x8 = "0.3"
+sha1 = "0.10"
+rsa = { version = "0.9", features = ["sha1", "sha2"] }
+mandroid = { path = "../mandroid" }

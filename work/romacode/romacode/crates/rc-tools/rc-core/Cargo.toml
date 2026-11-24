@@ -1,0 +1,15 @@
+[package]
+name = "rc-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "RomaCode tools builder — L1 core: Tool trait, Schema, Registry, Validator, Executor, Permissions, Sandbox, Manifest"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+async-trait = { workspace = true }
+tokio = { workspace = true }
+thiserror = { workspace = true }

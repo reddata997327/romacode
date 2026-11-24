@@ -1,0 +1,42 @@
+{
+  "id": "_provider",
+  "provider": "mistral",
+  "family": "mistral",
+  "display_name": "Mistral (defaults)",
+  "api": "openai",
+  "status": "provider-default",
+  "context_window": 256000,
+  "max_output_tokens": 32768,
+  "features": {},
+  "params": {
+    "temperature": {
+      "supported": true,
+      "min": 0.0,
+      "max": 2.0
+    },
+    "top_p": {
+      "supported": true,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "wire": {
+    "max_tokens_param": "max_tokens",
+    "stop_supported": true
+  },
+  "pricing": null,
+  "endpoints": {
+    "base_url": "https://api.mistral.ai/v1",
+    "chat": "/chat/completions",
+    "models": "/models"
+  },
+  "wire_notes": [],
+  "docs": "https://docs.mistral.ai/models",
+  "sources": [
+    "https://docs.mistral.ai/models"
+  ],
+  "unverified_fields": [
+    "context_window",
+    "max_output_tokens"
+  ]
+}
